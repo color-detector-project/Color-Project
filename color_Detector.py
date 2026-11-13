@@ -15,6 +15,11 @@ COLOR_RANGES = {
     "PURPLE": [((131, 75, 60), (169, 255, 255))],
     "WHITE": [((254, 254, 254), (255, 255, 255))],
     "BLACK": [((0, 0, 0), (1, 1, 1))],
+    "CYAN": [((85, 80, 80), (95, 255, 255))],
+    "PINK": [((160, 40, 150), (179, 109, 255)),
+            ((0, 40, 150), (10, 109, 255))],
+    "LIME": [((40, 100, 110), (75, 255, 255))],
+    "VIOLET": [((125, 80, 80), (150, 255, 255))],
 }
 
 # Bounding box colors in BGR
@@ -26,7 +31,11 @@ BOX_COLORS = {
     "BLUE": (255, 0, 0),
     "PURPLE": (255, 0, 255),
     "WHITE": (255, 255, 255),
-    "BLACK": (0, 0, 0)
+    "BLACK": (0, 0, 0),
+    "CYAN": (255, 255, 0),
+    "PINK": (203, 192, 255),
+    "LIME": (0, 255, 191),
+    "VIOLET": (226, 43, 138),
 }
 
 MIN_AREA = 1000
@@ -47,7 +56,6 @@ def find_colors(frame):
             upper_array = np.array(upper, dtype=np.uint8)
             current_mask = cv2.inRange(hsv, lower_array, upper_array)
             mask = cv2.bitwise_or(mask, current_mask)
-
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
 
@@ -117,7 +125,7 @@ def dominant_color_kmeans(frame, roi):
 
 
 def main():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     if not cap.isOpened():
         print("Camera neegdsen gui!")
         return
