@@ -13,8 +13,10 @@ COLOR_RANGES = {
     "GREEN": [((36, 65, 60), (85, 255, 255))],
     "BLUE": [((95, 85, 60), (130, 255, 255))],
     "PURPLE": [((131, 75, 60), (169, 255, 255))],
-    "WHITE": [((254, 254, 254), (255, 255, 255))],
-    "BLACK": [((0, 0, 0), (1, 1, 1))],
+    # "WHITE": [((254, 254, 254), (255, 255, 255))],
+    "WHITE": [((0, 0, 200), (179, 40, 255))],
+    # "BLACK": [((0, 0, 0), (1, 1, 1))],
+    "BLACK": [((0, 0, 0), (179, 255, 55))],
     "CYAN": [((85, 80, 80), (95, 255, 255))],
     "PINK": [((160, 40, 150), (179, 109, 255)),
             ((0, 40, 150), (10, 109, 255))],
@@ -143,7 +145,8 @@ def main():
                 print("Cameraas zurag avch chadsangui")
                 break
 
-            frame = cv2.flip(frame, 1)
+            # frame = cv2.flip(frame, 1)
+            cv2.imshow("Android Camera", frame)
             result, detected = find_colors(frame)
             height, width = frame.shape[:2]
             side = min(height, width) // 3
