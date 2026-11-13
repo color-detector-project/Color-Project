@@ -127,7 +127,7 @@ def dominant_color_kmeans(frame, roi):
 
 
 def main():
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Camera neegdsen gui!")
         return
@@ -145,8 +145,8 @@ def main():
                 print("Cameraas zurag avch chadsangui")
                 break
 
-            # frame = cv2.flip(frame, 1)
-            cv2.imshow("Android Camera", frame)
+            frame = cv2.flip(frame, 1)
+            # cv2.imshow("Android Camera", frame)
             result, detected = find_colors(frame)
             height, width = frame.shape[:2]
             side = min(height, width) // 3
